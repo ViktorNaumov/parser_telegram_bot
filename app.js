@@ -29,6 +29,3 @@ exports.Get = async () => {
     console.log(state);
   });
 };
-
-// setInterval(Get, 3000);
-// let timerId = setInterval(Get, 3000);

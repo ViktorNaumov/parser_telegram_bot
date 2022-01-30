@@ -1,8 +1,13 @@
 const puppeteer = require("puppeteer");
+puppeteer.launch({
+  // headless: true,
+  args: ['--no-sandbox']
+})
 
 exports.GetData = (callback) => {
   (async () => {
     let browser = await puppeteer.launch({
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
       headless: true,
       slowMo: 0,
       devtools: true,
@@ -39,7 +44,7 @@ exports.GetData = (callback) => {
             page.push(obj);
           });
         } catch (e) {
-          console.log(e);
+          // console.log(e);
         }
         return page;
       });
@@ -47,7 +52,7 @@ exports.GetData = (callback) => {
       browser.close();
       callback(html);
     } catch (e) {
-      console.log(e);
+      // console.log(e);
       browser.close();
     }
   })();
